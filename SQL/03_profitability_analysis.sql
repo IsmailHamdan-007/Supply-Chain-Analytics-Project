@@ -170,7 +170,7 @@ HAVING SUM(S.Profit) < 0;
 SELECT 
 	O.Market,
 	ROUND(SUM(S.Profit) * 100.00 /
-	SUM(S.Sales), 2)
+	SUM(SUM(S.Profit)) OVER(), 2)
 FROM sales S
 INNER JOIN orders O
 ON S.Order_Id = O.Order_Id
@@ -181,7 +181,7 @@ GROUP BY O.Market;
 SELECT 
 	P.Category_Name,
 	ROUND(SUM(S.Profit) * 100.00 /
-	SUM(S.Sales), 2) AS Cont_Percent
+	SUM(SUM(S,Profit)) OVER(), 2) AS Cont_Percent
 FROM sales S
 INNER JOIN products P 
 ON S.Product_Card_Id = P.Product_Card_Id
@@ -192,7 +192,7 @@ GROUP BY P.Category_Name;
 SELECT 
 	P.Department_Name,
 	ROUND(SUM(S.Profit) * 100.00 /
-	SUM(S.Sales), 2) AS Cont_Percent
+	SUM(SUM(S.Profit)) OVER(), 2) AS Cont_Percent
 FROM sales S
 INNER JOIN products P 
 ON S.Product_Card_Id = P.Product_Card_Id
