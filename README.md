@@ -1,262 +1,158 @@
 # Supply Chain Analytics Project
 
-## Overview
+## Project Overview
 
-This project demonstrates an end-to-end data analytics workflow using Python, Pandas, and SQL Server. The objective was to transform a raw supply chain dataset into a structured relational database, establish relationships between business entities, and prepare the data for analytical reporting.
+This project analyzes a Supply Chain dataset using SQL Server and Python to uncover insights related to revenue, profitability, customers, products, orders, and shipping performance.
+
+The objective is to demonstrate data cleaning, database design, business analysis, and SQL analytics skills through real-world business scenarios.
 
 ---
 
 ## Tools & Technologies
 
+* SQL Server
+* T-SQL
 * Python
 * Pandas
-* SQL Server
-* SQLAlchemy
-* PyODBC
 * Jupyter Notebook
-* GitHub
-
----
-
-## Dataset
-
-**Source:** DataCo Supply Chain Dataset
-
-The original dataset was imported into Python and cleaned using Pandas before being transformed into a relational database model.
+* VS Code
+* Git & GitHub
 
 ---
 
 ## Project Workflow
 
-### 1. Data Cleaning & Preparation (Python + Pandas)
+### 1. Data Cleaning (Python)
 
-Performed:
+* Removed duplicates
+* Handled missing values
+* Standardized column names
+* Corrected data types
+* Exported cleaned datasets
 
-* Data loading using Pandas
-* Encoding handling (Latin-1)
-* Column exploration and validation
-* Data quality checks
-* Duplicate detection
-* Data type validation
-* Dataset splitting into multiple business entities
+### 2. Database Design
 
-Notebook:
+Created a relational database with the following tables:
 
-* `1.data_cleaning.ipynb`
+* Customers
+* Products
+* Orders
+* Sales
+* Shipping
 
----
+Established primary and foreign key relationships between tables.
 
-### 2. Data Modeling
+### 3. SQL Business Analysis
 
-The original dataset was split into the following tables:
+#### Revenue Analysis
 
-#### Customers
+* Total Revenue
+* Monthly Revenue Trend
+* Revenue by Market
+* Top Revenue Generating Products
+* Top Revenue Generating Customers
 
-Contains customer information.
+#### Profitability Analysis
 
-#### Products
+* Total Profit
+* Monthly Profit Trend
+* Profit by Market
+* Top Profitable Products
+* Top Profitable Customers
+* Profit Margin %
 
-Contains product, category, and department information.
+#### Customer Analysis
 
-#### Orders
+* Customer Segmentation
+* Customer Lifetime Value (CLV)
+* Repeat Customers
+* Revenue Contribution by Segment
+* Customer Concentration Analysis
+* Customer Ranking
 
-Contains order details and geographic information.
+#### Product Analysis
 
-#### Shipping
+* Product Performance Summary
+* Product Revenue Contribution %
+* Product Profit Contribution %
+* Product Ranking
+* Category & Department Performance Ranking
+* Negative Profit Products
 
-Contains shipping performance and delivery information.
+#### Order Analysis
 
-#### Sales Fact
-
-Contains transactional sales metrics.
-
----
-
-### 3. SQL Server Database Design
-
-Created:
-
-* Database: `SupplychainDB`
-* Relational tables
-* Primary Keys
-* Foreign Keys
-* Indexes
-
-SQL Script:
-
-* `constraints_relationships.sql`
-
----
-
-## Database Schema
-
-### Customers
-
-| Column           |
-| ---------------- |
-| Customer_Id      |
-| Customer_Fname   |
-| Customer_Lname   |
-| Customer_City    |
-| Customer_State   |
-| Customer_Country |
-| Customer_Segment |
+* Total Orders
+* Order Trends
+* Average Order Value (AOV)
+* Orders per Customer
+* Revenue per Order
+* Profit per Order
+* Order Distribution Analysis
 
 ---
 
-### Products
+## Key SQL Concepts Used
 
-| Column          |
-| --------------- |
-| Product_Card_Id |
-| Product_Name    |
-| Category_Id     |
-| Category_Name   |
-| Department_Id   |
-| Department_Name |
-| Product_Price   |
-
----
-
-### Orders
-
-| Column        |
-| ------------- |
-| Order_Id      |
-| Order_Date    |
-| Order_Status  |
-| Order_City    |
-| Order_State   |
-| Order_Country |
-| Order_Region  |
-| Market        |
-
----
-
-### Shipping
-
-| Column                      |
-| --------------------------- |
-| Order_Id                    |
-| Shipping_Mode               |
-| Delivery_Status             |
-| Late_Delivery_Risk          |
-| Days_For_Shipping_Real      |
-| Days_For_Shipment_Scheduled |
-| Shipping_Date               |
-
----
-
-### Sales Fact
-
-| Column                 |
-| ---------------------- |
-| Order_Id               |
-| Customer_Id            |
-| Product_Card_Id        |
-| Sales                  |
-| Order_Item_Quantity    |
-| Benefit_Per_Order      |
-| Order_Profit_Per_Order |
-
----
-
-## Relationships
-
-Implemented Referential Integrity using Foreign Keys:
-
-* Customers → Sales
-* Products → Sales
-* Orders → Sales
-* Orders → Shipping
-
-Data quality checks were performed before creating constraints to identify duplicate keys and datatype mismatches.
-
----
-
-## Performance Optimization
-
-Created indexes on:
-
-* Customer_Id
-* Product_Card_Id
-* Order_Id
-
-to improve query performance and join operations.
-
----
-
-## Files Included
-
-```text
-Supply_Chain_Mgmt
-│
-├── customers.csv
-├── products.csv
-├── orders.csv
-├── shipping.csv
-├── sales_fact.csv
-│
-├── 1.data_cleaning.ipynb
-├── 2.basics.ipynb
-├── 3.sql.ipynb
-│
-├── constraints_relationships.sql
-│
-└── README.md
-```
-
----
-
-## Skills Demonstrated
-
-### SQL
-
-* Database Design
-* Data Modeling
-* Primary Keys
-* Foreign Keys
-* Indexing
-* Referential Integrity
-
-### Python & Pandas
-
-* Data Cleaning
-* Data Validation
-* Data Transformation
-* Exploratory Analysis
-
-### Data Analytics
-
-* ETL Workflow
-* Relational Modeling
-* Data Quality Assessment
-
----
-
-## Key Learning Outcomes
-
-* Converting a raw dataset into a relational database structure.
-* Handling duplicate records and datatype inconsistencies.
-* Implementing primary and foreign key relationships.
-* Loading large datasets into SQL Server using Python.
-* Optimizing database performance using indexes.
-
----
-
-## Future Enhancements
-
-* Business Analysis using SQL
-* Advanced SQL Queries
+* Joins
+* Common Table Expressions (CTEs)
 * Window Functions
-* KPI Reporting
-* Power BI Dashboard Development
-* Sales & Supply Chain Performance Analytics
+* Ranking Functions
+* Aggregate Functions
+* CASE Statements
+* Subqueries
+* Analytical SQL
+
+---
+
+## Project Structure
+
+Supply_Chain_Analytics_Project
+
+├── Data
+
+├── Python_Codes
+
+│ ├── 1.data_cleaning.ipynb
+
+│ ├── 2.basics.ipynb
+
+│ ├── 3.sql-1.ipynb
+
+│ └── 4.business_analysis.ipynb
+
+├── SQL
+
+│ ├── 01_Revenue_Analysis.sql
+
+│ ├── 02_Profitability_Analysis.sql
+
+│ ├── 03_Customer_Analysis.sql
+
+│ ├── 04_Product_Analysis.sql
+
+│ ├── 05_Order_Analysis.sql
+
+│ └── 06_Shipping_Analysis.sql
+
+└── README.md
+
+---
+
+## Business Questions Solved
+
+More than 80 business-focused analytical SQL questions covering:
+
+* Revenue Analysis
+* Profitability Analysis
+* Customer Analysis
+* Product Analysis
+* Order Analysis
+* Supply Chain Performance
 
 ---
 
 ## Author
 
-Aspiring Data Analyst
+Ismial Hamdan
 
-Skills: SQL | Python | Pandas | Excel | Power BI | Data Modeling | Business Analysis
+Aspiring Data Analyst | SQL | Python | Pandas | Power BI
