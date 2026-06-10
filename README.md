@@ -11,7 +11,6 @@ The objective is to demonstrate data cleaning, database design, business analysi
 ## Tools & Technologies
 
 * SQL Server
-* T-SQL
 * Python
 * Pandas
 * Jupyter Notebook
